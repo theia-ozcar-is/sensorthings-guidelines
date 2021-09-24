@@ -67,21 +67,20 @@ In Theia/OZCAR observation data, sensor can change along time for a same Observe
 #### Datastream
 
 Examples:
-* BRGM: SensorThingsGroundWater BRGM Datastream: https://sensorthings.brg…ater/v1.0/Datastreams(1)
 * BRGM hydrométrie France : https://sta4hydrometry.brgm-rec.fr/FROST-Server/v1.1/Sensors(2)/Datastreams
 
 M = Mandatory, O = optional
 
 Datastream sensorThings | Observation -Theia/OZCAR | Notes
 --- | --- | ---
-| Datastream.name M | flux SensorThings in: no mapping, flux sensor SensorThings out: to be constructed using other fields | Ex 1 BRGM: Datastream.name: GroundWater depth / Installation de suivi eau souterraine quantité Ex 2 BRGM Datastream.name: Water flow at [Barbotteau] à Petit-Bourg - Barbotteau with method Water flow measurement by electronic probe |
-| Datastream.description M | flux SensorThings in: no mapping, flux sensor SensorThings out: to be constructed using other fields | Ex 2 BRGM Datastream.description : Water flow at [Barbotteau] à Petit-Bourg - Barbotteau with method Water flow measurement by electronic probe |
-| Datastream.ObservationType M | | Ex 1 & 2 BRGM observationType: http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Measurement |
-| Datastream.unitOfMeasurement M | ObservedProperty.unit M | Ex 1 & 2 BRGM observationType:http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Measurement |
+| Datastream.name M | flux SensorThings in: no mapping, flux sensor SensorThings out: to be constructed using other fields |  Ex BRGM Datastream.name: Water flow at [Barbotteau] à Petit-Bourg - Barbotteau with method Water flow measurement by electronic probe |
+| Datastream.description M | flux SensorThings in: no mapping, flux sensor SensorThings out: to be constructed using other fields | Ex BRGM Datastream.description : Water flow at [Barbotteau] à Petit-Bourg - Barbotteau with method Water flow measurement by electronic probe |
+| Datastream.ObservationType M | | Ex BRGM observationType: http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Measurement |
+| Datastream.unitOfMeasurement M | ObservedProperty.unit M | Ex BRGM observationType:http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Measurement |
 | Datastream.observedArea O | | ObservedArea is a bbox (envelope) |
 | Datastream.resultTime O | Observation.TemporalExtent M | |
 | Datastream.phenomenonTime O | | No notion of phenomenonTime in Theia/OZCAR |
-| Datastream.@iot.id M, Datastream.@iot.selfLink M | Observation.observationId M | Use @iot.id or @iot.selfLink to give an unique observationId Ex 1 BRGM @iot.id:1 @iot.selfLink:https://sensorthings.brgm-rec.fr/SensorThingsGroundWater/v1.0/Datastreams(1) |
+| Datastream.@iot.id M, Datastream.@iot.selfLink M | Observation.observationId M | Use @iot.id or @iot.selfLink to give an unique observationId |
 | Datastream.properties.processingLevel | Observation.processingLevel:EnumProcessingLevel O | |
 ||Observation.dataType:EnumDataTypes=Numeric M|Theia/OZCAR will impose the value|
 ||Observation.timeSerie=true M |Theia/OZCAR will impose the value|
@@ -97,20 +96,18 @@ multiObservationDataTypes M |  | array of valueCodes
 #### ObservedProperty
 
 Examples:
-* SensorThingsGroundWater BRGM ObservedProperty: https://sensorthings.brgm-rec.fr/SensorThingsGroundWater/v1.0/Datastreams(1)/ObservedProperty
 * https://sta4hydrometry.brgm-rec.fr/FROST-Server/v1.1/Datastreams(2)/ObservedProperty
 
 ObservedProperty - SensorThings | ObservedProperty - Theia/OZCAR | Notes
 --- | --- | ---
-ObservedProperty.name M	| observedProperty.name M	| Ex 1 BRGM: ObservedProperty.name:GroundWater depth Ex 2 : ObservedProperty.name :Water flow
-ObservedProperty.description M	| observedProperty.description O | Ex 1 BRGM: ObservedProperty.description:GroundWater depth Ex 2 : ObservedProperty.description:Water flow
+ObservedProperty.name M	| observedProperty.name M	| Ex : ObservedProperty.name :Water flow
+ObservedProperty.description M	| observedProperty.description O |Ex : ObservedProperty.description:Water flow
 ObservedProperty.definition M | ObservedProperty.theiaCategories M | semantic links should be created between resources in order to fill theia/ozcar custom fields (such as theiaCategories). 
 Datastream.unitOfMeasurement M |	ObservedProperty.unit M |
 
 #### Things
 
 Examples:
-* SensorThingsGroundWater BRGM Thing: https://sensorthings.brgm-rec.fr/SensorThingsGroundWater/v1.0/Datastreams(1)/Thing
 * https://sta4hydrometry.brgm-rec.fr/FROST-Server/v1.1/Datastreams(2)/Thing
 
 Things - SensorThings | FeatureOfInterest - Theia/OZCAR | Notes
@@ -123,50 +120,43 @@ Thing.Locations.[*].location.coordinates M |	FeatureOfInterest.samplingFeature.g
 Thing.Locations.location.type M	| |Theia/OZCAR: FeatureOfInterest.samplingFeature.geometry.type=Point,LineString,Polygon,MultiPoint, MultiLineString,MultiPolygon FeatureOfInterest.samplingFeature.geometry.type must be deducted using the different location.type of the locations array
 
 ### Location
-Examples:
-*SensorThingsGroundWater BRGM Location : https://sensorthings.brgm-rec.fr/SensorThingsGroundWater/v1.0/Things(1)/Locations
 
 Location  - SensorThings |  Theia/OZCAR | Notes
 --- | --- | ---
 Location.name M	||	Ex BRGM: Location.name: Installation de suivi eau souterraine quantité
-Location.description M	||	Ex BRGM : Location.description: Installation de suivi eau souterraine quantité
+Location.description M	||
 Location.encodingType M (GeoJSON)	||	The encoding type of the Locationproperty. Its value is one of the ValueCode enumeration, ie application/vnd.geo+json
 location.type M	||	The location type is defined by encodingType. Ex:Location.location.geometry.type:Point FeatureOfInterest.samplingFeature.geometry.type : Must be deducted using the different location.type of the locations array of a thing
 | location.coordinates M ||
 
-### Location
+### Sensor
 Examples:
-* SensorThingsGroundWater BRGM Sensor : https://sensorthings.brg….0/Datastreams(1)/Sensor
 * https://sta4hydrometry.brgm-rec.fr/FROST-Server/v1.1/Sensors(2)
 
 Sensor - SensorThings |  Procedure - Theia/OZCAR | Notes
 --- | --- | ---
 Sensor.name M |	Procedure.dataProduction.sensors[0].sensorType O |
-Sensor.description M |	Procedure.dataProduction.method O | BRGM: Sensor.description: Groundwater depth measurement by electronic probe BRGM Sensor.description:Water flow measurement by electronic probe
+Sensor.description M |	Procedure.dataProduction.method O | BRGM Sensor.description:Water flow measurement by electronic probe
 Sensor.encodingType ||The encoding type of the metadata property. Its value is: of the ValueCode enumeration, ie application/pdf  or  http://www.opengis.net/doc/IS/SensorML/2.0
 Sensor.metadata M ||The detailed description of the Sensor or system. The metadata type is defined by encodingType . BRGM: Sensor.metadata: https://data.geoscience.fr/ncl/Proc/70
 Sensor.properties.lineageInformations | Procedure.lineageInformations O, Procedure.lineageInformation.processingDescription O, procedure.lineageInformation.processingDate O
 Sensor.properties[] ? | Procedure.Sensors O |
 
 ### Observation
-Examples:
-* SensorThingsGroundWater BRGM Observations : https://sensorthings.brgm-rec.fr/SensorThingsGroundWater/v1.0/Observations
 
 Observation - SensorThings |  Result - Theia/OZCAR | Notes
 --- | --- | ---
 Observation.phenomenonTime M||		
 Observation.resultTime M| DataFile Content: dateEnd	|
 Observation.result M|	DataFile Content: value	|
-Observation.resultQuality O | Result.QualityFlag.code O (M if there is quality flags) | Describes the quality of the result . DQ_Element cf: https://sensorthings.brgm-rec.fr/SensorThingsGroundWater/v1.0/Observations “nameOfMeasure” is not always a name of element like DQ_Status. it is free text.
+Observation.resultQuality O | Result.QualityFlag.code O (M if there is quality flags) | Describes the quality of the result . DQ_Element cf: TODO https://sensorthings.brgm-rec.fr/SensorThingsGroundWater/v1.0/Observations “nameOfMeasure” is not always a name of element like DQ_Status. it is free text.
 Observation.validTime O||
 Observation.parameters O||Key-value pairs showing the environmental conditions during measurement. NamedValues in a JSON
 Observation.parameters.source.file | Result.dataFile  M | Observation.parameters.source.file:piezoaqi/SEBA/07542X0042_20200618_033300.txt
 Datastream.properties.missingValue	|Result.missingValue O|
 n these case of additional values linked to the observedProperty (ex: uncertainties, error), need to use MultiDataStream instead of DataStream | Result.additionalValues O
 
-### Observation
-Examples:
-* SensorThingsGroundWater BRGM FeatureOfInterest : https://sensorthings.brgm-rec.fr/SensorThingsGroundWater/v1.0/Observations(1)/FeatureOfInterest
+### FeatureOfInterest
 
 The FeatureOfInterest SensorThings is only useful for retrieving measurement coordinates from Theia/OZCAR timeseries in csv data files.
 
