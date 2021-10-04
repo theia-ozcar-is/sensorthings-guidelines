@@ -44,14 +44,14 @@ navigationLink|navigationLink is the relative or absolute URL that retrieves con
 
 ### EndPoint examples
 
-* Données hydrométrie france (SCHAPI) https://iddata.eaufrance.fr/api/stapiHydrometry
-* French surface water quality :    https://sensorthings-wq.brgm-rec.fr/FROST-Server/v1.0
-* SensorThings 1.0 GroundWater BRGM : https://sensorthings.brgm-rec.fr/SensorThingsGroundWater/
-* Hydrométrie France : https://sta4hydrometry.brgm-rec.fr/FROST-Server/v1.1
-* AGRHYS:http://sensorthings.geosas.fr/
+* French national river height/flow monitoring - SCHAPI (prototype): https://iddata.eaufrance.fr/api/stapiHydrometry
+* French national surface water quality - BRGM (prototype): https://sensorthings-wq.brgm-rec.fr/FROST-Server/v1.0
+* French national groundwater quantity monitoring - BRGM (prototype): https://sensorthings.brgm-rec.fr/SensorThingsGroundWater/
+* French national surface quantity monitoring - BRGM (prototype): https://sta4hydrometry.brgm-rec.fr/FROST-Server/v1.1
+* AGRHYS observatory: http://sensorthings.geosas.fr/ ; Tools to manipulate AGHRYS endpoint: http://sensorthings.geosas.fr/Query ; SensorThings server code: https://github.com/Mario-35/api-sensorthing
+* OGC SensorThings API as an INSPIRE download service good practice (ex : Water, AirQuality, Smart Cities, Demography, Covid Case) : https://inspire.ec.europa.eu/good-practice/ogc-sensorthings-api-inspire-download-service
 
 ### References: 
-* Tools to manipulate AGHRYS endpoint: http://sensorthings.geosas.fr/Query - https://github.com/Mario-35/api-sensorthing/blob/main/doc/agrhys.md
 * Extending INSPIRE to the Internet of Things through SensorThings API : https://www.mdpi.com/2076-3263/8/6/221
 * API4INSPIRE: https://datacoveeu.github.io/API4INSPIRE/sensorthingsapi/1_Home.html
 
@@ -60,14 +60,13 @@ navigationLink|navigationLink is the relative or absolute URL that retrieves con
 Theia/OZCAR pivot model provided by producer before to be denomarlised and inserted into the database : https://theia-ozcar.gricad-pages.univ-grenoble-alpes.fr/doc-producer/_downloads/03e6d970af026bceba4551f485518519/ClassDiagramPivotFormatV1.1.pdf
 
 Beware that "Observation" of in the pivot model really is more like a Datastream in SensorThing ! With the constraints defined by our Pivot model, We will have - 1 to 1 relations between Datastream, Thing, Location, ObservedProperty and Sensor.
-Datasets with multiple additional values ((examples: uncertainties, errors, parameter values related to instrumentation...) may be mapped to MultiDatastreams.
-Specific properties and mapping can be “documented” in the serverSettings object returned when a GET is sent to the endpoint. See also serverSettings.conformance.
-In Theia/OZCAR observation data, sensor can change along time for a same ObservedProperty. A different datastream will have to be considered related to the same thing and the same ObservedProperty.
+Datasets with multiple additional values (examples: uncertainties, errors, parameter values related to instrumentation...) may be mapped to MultiDatastreams.
+
 
 #### Datastream
 
 Examples:
-* BRGM hydrométrie France : https://sta4hydrometry.brgm-rec.fr/FROST-Server/v1.1/Sensors(2)/Datastreams
+* French national surface quantity monitoring - BRGM (prototype): https://sta4hydrometry.brgm-rec.fr/FROST-Server/v1.1/Sensors(2)/Datastreams
 
 M = Mandatory, O = optional
 
