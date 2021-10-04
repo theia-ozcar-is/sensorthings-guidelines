@@ -55,9 +55,11 @@ navigationLink|navigationLink is the relative or absolute URL that retrieves con
 * Extending INSPIRE to the Internet of Things through SensorThings API : https://www.mdpi.com/2076-3263/8/6/221
 * API4INSPIRE: https://datacoveeu.github.io/API4INSPIRE/sensorthingsapi/1_Home.html
 
-### Mapping between SensorThings and Theia/OZCAR pivot model
+### Mapping between SensorThings model and Theia/OZCAR pivot data model
 
-Theia/OZCAR pivot model provided by producer before to be denomarlised and inserted into the database : https://theia-ozcar.gricad-pages.univ-grenoble-alpes.fr/doc-producer/_downloads/03e6d970af026bceba4551f485518519/ClassDiagramPivotFormatV1.1.pdf
+![Theia/OZCAR data model, conceptual schema](https://github.com/theia-ozcar-is/data-model-documentation/blob/b61fd35548dc0dff394346dfa8fa90d69dc1a25a/pivot-data-model/datamodel_theia-ozcar_conceptual_schema.png)
+
+Theia/OZCAR data model, full UML diagram : https://theia-ozcar.gricad-pages.univ-grenoble-alpes.fr/doc-producer/_downloads/03e6d970af026bceba4551f485518519/ClassDiagramPivotFormatV1.1.pdf
 
 Beware that "Observation" of in the pivot model really is more like a Datastream in SensorThing ! With the constraints defined by our Pivot model, We will have - 1 to 1 relations between Datastream, Thing, Location, ObservedProperty and Sensor.
 Datasets with multiple additional values (examples: uncertainties, errors, parameter values related to instrumentation...) may be mapped to MultiDatastreams.
